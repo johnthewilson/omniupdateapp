@@ -1,0 +1,43 @@
+  <div class="row">
+    <div class="col-md-1 col-md-offset-1 btn btn-default add-user-btn">
+      <a ui-sref="child">
+        <i class="glyphicon glyphicon-plus"></i>
+        <i class="glyphicon glyphicon-user"></i>
+      </a></div>
+    <input class="col-md-4 col-md-offset-1 form-control main-search" type="search" placeholder="Search ..." ng-model="addressVm.searchTxt">
+
+  </div>
+  <table class="table table-hover">
+    <thead class="main-row">
+
+    <tr >
+      <th></th>
+      <th ng-click="addressVm.sortBy='firstName'; addressVm.sortOrder = !addressVm.sortOrder;">First Name <i class="glyphicon glyphicon-triangle-bottom"></i> </th>
+      <th ng-click="addressVm.sortBy='lastName'; addressVm.sortOrder = !addressVm.sortOrder;">Last Name <i class="glyphicon glyphicon-triangle-bottom"></i></th>
+      <th ng-click="addressVm.sortBy='email'; addressVm.sortOrder = !addressVm.sortOrder;">Email<i class="glyphicon glyphicon-triangle-bottom"></i></th>
+      <th ng-click="addressVm.sortBy='address'; addressVm.sortOrder = !addressVm.sortOrder;">Address<i class="glyphicon glyphicon-triangle-bottom"></i></th>
+      <!--<th ng-click="addressVm.sortBy='city'; addressVm.sortOrder = !addressVm.sortOrder;">City</th>-->
+      <th ng-click="addressVm.sortBy='phone'; addressVm.sortOrder = !addressVm.sortOrder;">Phone<i class="glyphicon glyphicon-triangle-bottom"></i></th>
+      <th><a ng-click="addressVm.deleteUserList()" class="btn btn-default btn-xs delete-btn">DELETE SELECTED</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="user-card" ng-repeat="emp in addressVm.users | filter:addressVm.email.searchTxt| filter:addressVm.lastName.searchTxt | filter:addressVm.firstName.searchTxt | filter:addressVm.searchTxt | orderBy:addressVm.sortBy:addressVm.sortOrder" >
+      <!--<td><span class="glyphicon glyphicon-remove" ng-click="addressVm.deleteEmployee($index)"><img class="img-circle" ng-src="https://avatars.io/facebook/{{emp.firstName}}/small" alt=""></span></td>-->
+      <td><a ng-click="addressVm.goListing(emp)"><img class="img-circle pl" ng-src="https://avatars.io/facebook/{{emp.firstName}}/small" alt=""> </a></td>
+      <td  class="name-col">
+        <a ng-click="addressVm.goListing(emp)">{{emp.firstName}}</a>
+      </td>
+      <td><a ng-click="addressVm.goListing(emp)">{{emp.lastName}}</a> </td>
+      <td>{{emp.email}}</td>
+
+      <td>{{emp.address}}<br>{{emp.state}}</td>
+      <td>{{emp.phone | phone}}</td>
+      <td class="row">
+        <input type="checkbox" ng-click='addressVm.idStore(emp)' id="checkbox" ng-model="emp.isChecked" value="checkbox"> <label for="checkbox"></label>
+          <a ng-click='addressVm.goEditing(emp)' class="btn btn-default btn-xs edit-btn">Edit</a>
+          <a ng-click='addressVm.deleteUser(emp.id)' class="btn btn-default btn-xs delete-btn">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,69 @@
+
+<div class="container"><form class="col-md-8 col-md-offset-2" ng-submit="editVm.updateUser(editVm.formModel)" novalidate name="empForm">
+  <div class="form-group ">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" placeholder="Your First Name" ng-model="editVm.formModel.firstName" required minlength="4">
+    <div class="errors" ng-messages="empForm.name.$error" ng-if="empForm.name.$dirty">
+      <p ng-message="required">Name is required</p>
+      <p ng-message="minlength">Name must be more than 4 chars.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="fname" placeholder="Your Last Name" ng-model="editVm.formModel.lastName" required minlength="5">
+    <div class="errors" ng-messages="empForm.name.$error" ng-if="empForm.name.$dirty">
+      <p ng-message="required">Name is required</p>
+      <p ng-message="minlength">Name must be more than 4 chars.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" ng-model="editVm.formModel.email" required>
+    <div class="errors" ng-messages="empForm.email.$error"  ng-if="empForm.email.$dirty">
+      <p ng-message="required">Email is required</p>
+      <p ng-message="email">Email is invalid</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="Your Phone" ng-model="editVm.formModel.phone" required pattern="^[0-9]{10}$">
+    <div class="errors"  ng-messages="empForm.phone.$error" ng-if="empForm.phone.$dirty">
+      <p ng-message="required">Phone is required</p>
+      <p ng-message="pattern">Phone must have 10 digits</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" name="address" placeholder="Address" ng-model="editVm.formModel.address" required>
+    <div class="errors" ng-messages="empForm.city.$error" ng-if="empForm.city.$dirty">
+      <p ng-message="required">address is required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" name="city" placeholder="city" ng-model="editVm.formModel.city" required>
+    <div class="errors" ng-messages="empForm.city.$error" ng-if="empForm.city.$dirty">
+      <p ng-message="required">City is required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" name="state" placeholder="State" ng-model="childVm.formModel.state" required>
+    <div class="errors" ng-messages="empForm.state.$error" ng-if="empForm.state.$dirty">
+      <p ng-message="required">state is required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zipcode">Zipcode</label>
+    <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="ZIPCODE" ng-model="editVm.formModel.zipcode" required>
+    <div class="errors"  ng-messages="empForm.phone.$error" ng-if="empForm.phone.$dirty">
+      <p ng-message="required">zipcode is required</p>
+    </div>
+  </div>
+
+
+
+
+  <button type="submit" class="btn btn-primary" ng-disabled="empForm.$invalid">Update User</button>
+</form>
+</div>
